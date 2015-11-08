@@ -21,8 +21,8 @@ require_relative '../models/address_book'
  # #3
      selection = gets.to_i
      puts "You picked #{selection}"
-     
-     case selection
+
+   case selection
      when 1
        system "clear"
        view_all_entries
@@ -39,7 +39,7 @@ require_relative '../models/address_book'
        system "clear"
        read_csv
        main_menu
-     when 5
+     when 5 
         system "clear"
         entry_n_submenu
         main_menu
@@ -53,25 +53,27 @@ require_relative '../models/address_book'
        puts "Sorry, that is not a valid input"
        main_menu
      end
-    end
-    
-    def entry_n_submenu
-        selection = gets.chomp.to_i
-        
-        if selection < @address_book.entries.count
-            puts @address_book.entries(selection)
-            puts "Press enter to return to the main menu"
-            gets.chomp
-            system "clear"
-        else
-            puts "#{selection} is not a valid number"
-            entry_n_submenu
-        end
-    end
-    
-     def view_all_entries
-         
-          @address_book.entries.each do |entry|
+   end
+   
+   def entry_n_submenu
+       print "Entry number to view:"
+       selection = gets.chomp.to_i
+       
+       if selection < @address_book.entries.count
+           puts @address_book.entries(selection)
+           puts "Press enter to return to main menu"
+           gets.chomp
+           system "clear"
+       else
+           puts "#{selection} is not a valid input"
+           entry_n_submenu
+      end
+   end
+ 
+ # #10
+   def view_all_entries
+       
+        @address_book.entries.each do |entry|
      system "clear"
      puts entry.to_s
  # #15
@@ -83,8 +85,8 @@ require_relative '../models/address_book'
    end
  
    def create_entry
-
-   system "clear"
+       
+       system "clear"
      puts "New AddressBloc Entry"
  # #12
      print "Name: "
@@ -106,10 +108,9 @@ require_relative '../models/address_book'
  
    def read_csv
    end
-   
-  end
-  
-  def entry_submenu(entry)
+ end
+ 
+ def entry_submenu(entry)
  # #16
      puts "n - next entry"
      puts "d - delete entry"
