@@ -23,6 +23,16 @@ require_relative '../models/address_book'
        expect(book.entries.size).to eq(0)
      end
    end
+   
+   decribe "#detonate" do 
+    it "should delete all entries"
+     book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+     
+     book.detonate
+      expect(book.entries.size).to eq 0
+    end
+   end
+    
 
      describe "#add_entry" do
      it "adds only one entry to the address book" do
